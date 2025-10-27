@@ -69,7 +69,12 @@ The project follows the **Page Object Model (POM)** design pattern combined with
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/devwork90/selenium-java-bdd-automation.git
+
+How to run locally via cli:
+- mvn clean test -Dbrowser=chrome
+
+- mvn clean test -Dbrowser=edge
 
 ## Challenges
 Problem Summary

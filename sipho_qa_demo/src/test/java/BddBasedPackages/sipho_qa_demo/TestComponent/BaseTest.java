@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver;;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.junit.Before;
+import org.junit.After;
 import BddBasedPackages.sipho_qa_demo.pageobjects.LandingPage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -38,10 +38,10 @@ public class BaseTest {
 
 
         switch (browserName.toLowerCase()) {
-//            case "chrome":
-//                WebDriverManager.chromedriver().setup();
-//                driver = new ChromeDriver();
-//                break;
+            case "chrome":
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
+                break;
 
             case "edge":
                 WebDriverManager.edgedriver().setup();
@@ -61,15 +61,14 @@ public class BaseTest {
         return driver;
     }
 
-    @BeforeMethod
-    public LandingPage launchApplication() throws IOException {
+    @Before
+    public void launchApplication() throws IOException {
         driver = initializeDriver();
         landingPage = new LandingPage(driver);
         landingPage.gotTo();
-        return landingPage;
     }
 
-    @AfterMethod
+    @After
     public void tearDown() {
         if (driver != null) {
             driver.quit();
