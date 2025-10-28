@@ -1,3 +1,4 @@
+@Positive
 Feature: Email Disclaimer page – Positive scenarios
   In order to ensure the email-disclaimer page functions correctly
   As a user

@@ -1,3 +1,4 @@
+@Negative
 Feature: Email Disclaimer page - Negative scenarios
   In order to ensure the email-disclaimer page handles invalid or unexpected cases correctly
   As a QA engineer

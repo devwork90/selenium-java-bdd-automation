@@ -1,38 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="26.37" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-10-28T10:33:53.775881400Z">
-<testcase classname="Email Disclaimer page - Negative scenarios" name="Verify incorrect page heading is not displayed" time="6.732">
+<testsuite name="Cucumber" time="56.09" tests="10" skipped="0" failures="1" errors="0" timestamp="2025-10-28T10:58:25.686167700Z">
+<testcase classname="Email Disclaimer page - Negative scenarios" name="Verify incorrect page heading is not displayed" time="5.765">
 <system-out><![CDATA[
 Given the user opens the email disclaimer page..............................passed
 When the page is loaded.....................................................passed
 Then the page heading should not be "Shoprite Holdings Limited Data Protection Notice".passed
 ]]></system-out>
 </testcase>
-<testcase classname="Email Disclaimer page - Negative scenarios" name="Verify clicking a non-existent link does not cause navigation" time="4.581">
+<testcase classname="Email Disclaimer page - Negative scenarios" name="Verify clicking a non-existent link does not cause navigation" time="4.48">
 <system-out><![CDATA[
 Given the user opens the email disclaimer page..............................passed
 When the user clicks on a non-existent link "Invalid Link"..................passed
 Then the browser should remain on the Email Disclaimer page.................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Email Disclaimer page - Negative scenarios" name="Verify disclaimer section does not contain irrelevant text" time="4.273">
+<testcase classname="Email Disclaimer page - Negative scenarios" name="Verify disclaimer section does not contain irrelevant text" time="4.215">
 <system-out><![CDATA[
 Given the user opens the email disclaimer page..............................passed
 When the page is loaded.....................................................passed
 Then the disclaimer section should not contain "Welcome to our Shopping Portal".passed
 ]]></system-out>
 </testcase>
-<testcase classname="Email Disclaimer page - Negative scenarios" name="Verify Data Privacy Statement link is not broken" time="5.764">
+<testcase classname="Email Disclaimer page - Negative scenarios" name="Verify Data Privacy Statement link is not broken" time="5.536">
 <system-out><![CDATA[
 Given the user opens the email disclaimer page..............................passed
 When the user clicks on the "data privacy statement" link...................passed
 Then the browser should not navigate to a 404 error page....................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Email Disclaimer page - Negative scenarios" name="Verify footer does not appear blank" time="4.808">
+<testcase classname="Email Disclaimer page - Negative scenarios" name="Verify footer does not appear blank" time="5.003">
 <system-out><![CDATA[
 Given the user opens the email disclaimer page..............................passed
 When the page is loaded.....................................................passed
 Then the footer text should not be empty....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Email Disclaimer page – Positive scenarios" name="Verify page heading is displayed correctly" time="5.22">
+<system-out><![CDATA[
+Given the user opens the email disclaimer page..............................passed
+When the page is loaded.....................................................passed
+Then the page heading should be "Shoprite Holdings Limited E-mail Disclaimer".passed
+]]></system-out>
+</testcase>
+<testcase classname="Email Disclaimer page – Positive scenarios" name="Verify disclaimer text is visible" time="5.316">
+<system-out><![CDATA[
+Given the user opens the email disclaimer page..............................passed
+Then the disclaimer section should contain "This message is deemed to contain confidential".passed
+]]></system-out>
+</testcase>
+<testcase classname="Email Disclaimer page – Positive scenarios" name="Verify Data Privacy Statement link is clickable" time="7.065">
+<failure type="java.lang.AssertionError" message="Browser did not navigate to Data Privacy page.
+URL: https://www.shopriteholdings.co.za/email-disclaimer.html">
+<![CDATA[java.lang.AssertionError: Browser did not navigate to Data Privacy page.
+URL: https://www.shopriteholdings.co.za/email-disclaimer.html
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at stepDefinitions.EmailDisclaimerSteps.verifyNavigationToDataPrivacy(EmailDisclaimerSteps.java:72)
+	at ✽.the browser should navigate to the Data Privacy Statement page(file:///C:/Users/SiphoC/Downloads/selenium-java-bdd-automation/sipho_qa_demo/src/test/resources/features/EmailDisclaimer_Positive.feature:19)
+]]>
+</failure>
+<system-out><![CDATA[
+Given the user opens the email disclaimer page..............................passed
+When the user clicks on the "data privacy statement" link...................passed
+Then the browser should navigate to the Data Privacy Statement page.........failed
+]]></system-out>
+</testcase>
+<testcase classname="Email Disclaimer page – Positive scenarios" name="Verify footer text is displayed" time="5.534">
+<system-out><![CDATA[
+Given the user opens the email disclaimer page..............................passed
+Then the footer should contain the text "All rights reserved"...............passed
+]]></system-out>
+</testcase>
+<testcase classname="Email Disclaimer page – Positive scenarios" name="Verify navigation menu link “Our Group” is clickable" time="7.728">
+<system-out><![CDATA[
+Given the user opens the email disclaimer page..............................passed
+When the user clicks on the navigation link "Our Group".....................passed
+Then the page should navigate successfully to the Our Group section.........passed
 ]]></system-out>
 </testcase>
 </testsuite>
