@@ -7,12 +7,17 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = "stepDefinitions",
-//        dryRun = true,
+        glue = {"stepDefinitions"},
+        tags = "@Positive or @Negative",
+        plugin = {
+                "pretty",
+                "html:target/cucumber-reports/html-report.html",
+                "json:target/cucumber-reports/CucumberTestReport.json",
+                "junit:target/cucumber-reports/CucumberTestReport.xml",
+                "timeline:target/cucumber-reports/timeline"
+        },
         monochrome = true,
-        plugin = {"pretty", "html:target/cucumber-reports.html"}
+        dryRun = false
 )
-
 public class TestRunner {
-
 }

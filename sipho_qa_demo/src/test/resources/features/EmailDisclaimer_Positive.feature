@@ -15,11 +15,11 @@ Feature: Email Disclaimer page – Positive scenarios
 
   Scenario: Verify Data Privacy Statement link is clickable
     When the user clicks on the "data privacy statement" link
-    Then the browser should open the Data Privacy Statement PDF
+    Then the browser should navigate to the Data Privacy Statement page
 
   Scenario: Verify footer text is displayed
     Then the footer should contain the text "All rights reserved"
 
   Scenario: Verify navigation menu link “Our Group” is clickable
     When the user clicks on the navigation link "Our Group"
-    Then the page should navigate successfully to "group.html"
+    Then the page should navigate successfully to the Our Group section

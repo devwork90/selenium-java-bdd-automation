@@ -10,15 +10,20 @@
     <packaging>jar</packaging>
 
     <name>sipho_qa_demo</name>
-    <url>http://maven.apache.org</url>
 
     <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <cucumber.version>7.30.0</cucumber.version>
+        <selenium.version>4.25.0</selenium.version>
+        <webdrivermanager.version>5.5.0</webdrivermanager.version>
+        <slf4j.version>2.0.13</slf4j.version>
     </properties>
 
     <dependencies>
 
-        <!-- JUnit 4 -->
+        <!--JUnit 4 -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -26,60 +31,107 @@
             <scope>test</scope>
         </dependency>
 
+        <!--Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>2.0.13</version>
+            <version>${slf4j.version}</version>
         </dependency>
 
-        <!-- Cucumber JUnit -->
+        <!--Cucumber + JUnit -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>7.30.0</version>
+            <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
 
-        <!-- Cucumber Java -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.19.0</version>
+            <version>${cucumber.version}</version>
         </dependency>
 
-        <!-- Selenium -->
+        <!--Selenium -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.25.0</version>
+            <version>${selenium.version}</version>
         </dependency>
 
-        <!-- WebDriverManager -->
+        <!--WebDriverManager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>6.2.0</version>
+            <version>${webdrivermanager.version}</version>
         </dependency>
 
     </dependencies>
 
-    <!-- ===== Build & Plugins ===== -->
     <build>
         <plugins>
+
+            <!--Compile using Java 11+ -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+
+            <!--Run cucumber runners -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
-                    <!-- Include all Cucumber runner classes -->
                     <includes>
                         <include>**/*Runner.java</include>
                         <include>**/*Test.java</include>
                     </includes>
+                    <useSystemClassLoader>false</useSystemClassLoader>
                 </configuration>
             </plugin>
+
+            <!--Generate Cucumber HTML Reports -->
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>5.8.0</version>
+                <executions>
+                    <execution>
+                        <id>generate-cucumber-html-reports</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>Sipho QA Demo</projectName>
+                            <reportOutputDirectory>target/cucumber-html-reports</reportOutputDirectory>
+                            <jsonFiles>
+                                <param>target/cucumber-reports/CucumberTestReport.json</param>
+                            </jsonFiles>
+                            <buildNumber>1</buildNumber>
+                            <runWithJenkins>false</runWithJenkins>
+                            <parallelTesting>false</parallelTesting>
+
+                            <classification>
+                                <key>Environment</key>
+                                <value>QA</value>
+                            </classification>
+                            <classification>
+                                <key>Browser</key>
+                                <value>Chrome</value>
+                            </classification>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
-
 
 </project>

@@ -69,6 +69,14 @@ public class EmailDisclaimerPage {
         }
     }
 
+    public void clickLink(String linkText) {
+        driver.findElement(By.linkText(linkText)).click();
+    }
+
+    public String getCurrentUrl(){
+        return driver.getCurrentUrl();
+    }
+
 
     /** Returns the footer text */
     public String getFooterText() {

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="26.37" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-10-28T10:33:53.775881400Z">
+<testcase classname="Email Disclaimer page - Negative scenarios" name="Verify incorrect page heading is not displayed" time="6.732">
+<system-out><![CDATA[
+Given the user opens the email disclaimer page..............................passed
+When the page is loaded.....................................................passed
+Then the page heading should not be "Shoprite Holdings Limited Data Protection Notice".passed
+]]></system-out>
+</testcase>
+<testcase classname="Email Disclaimer page - Negative scenarios" name="Verify clicking a non-existent link does not cause navigation" time="4.581">
+<system-out><![CDATA[
+Given the user opens the email disclaimer page..............................passed
+When the user clicks on a non-existent link "Invalid Link"..................passed
+Then the browser should remain on the Email Disclaimer page.................passed
+]]></system-out>
+</testcase>
+<testcase classname="Email Disclaimer page - Negative scenarios" name="Verify disclaimer section does not contain irrelevant text" time="4.273">
+<system-out><![CDATA[
+Given the user opens the email disclaimer page..............................passed
+When the page is loaded.....................................................passed
+Then the disclaimer section should not contain "Welcome to our Shopping Portal".passed
+]]></system-out>
+</testcase>
+<testcase classname="Email Disclaimer page - Negative scenarios" name="Verify Data Privacy Statement link is not broken" time="5.764">
+<system-out><![CDATA[
+Given the user opens the email disclaimer page..............................passed
+When the user clicks on the "data privacy statement" link...................passed
+Then the browser should not navigate to a 404 error page....................passed
+]]></system-out>
+</testcase>
+<testcase classname="Email Disclaimer page - Negative scenarios" name="Verify footer does not appear blank" time="4.808">
+<system-out><![CDATA[
+Given the user opens the email disclaimer page..............................passed
+When the page is loaded.....................................................passed
+Then the footer text should not be empty....................................passed
+]]></system-out>
+</testcase>
+</testsuite>
